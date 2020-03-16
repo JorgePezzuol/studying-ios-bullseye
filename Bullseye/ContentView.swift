@@ -8,45 +8,90 @@ struct ContentView: View {
     @State var test: Bool = false
     
     var body: some View {
-        HStack {
+        VStack {
+            
+            // Target row
+            HStack {
+                Text("Put the bullseye as close as you can to:")
+                Text("100")
+            }
+            
+            HStack {
+                Text("1")
+                Slider(value: .constant(100))
+                Text("100")
+            }
+            
             
             Button(action: {
-                print("Hello World")
-                self.whosThereIsVisible = true
+                print("button pressed")
             }) {
-                Text("Button")
-                    .padding()
-                    .foregroundColor(Color.white)
-                    .background(Color.purple)
-                    .font(.title)
+                Text("Hit me!")
             }
-            Text("Teste")
-            .alert(isPresented: $whosThereIsVisible) {
-                Alert(title: Text("Important message"),
-                      message: Text("Wear sunscreen"),
-                      dismissButton: .default(Text("Got it!")))
+            
+            HStack {
+                
+                VStack {
                     
-            }
-            Button(action: {
-                self.test = true
-            }) {
-                Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
-                .padding()
-                    .foregroundColor(Color.white)
-                    .background(Color.blue)
-                    .font(.title)
-            }
-            .alert(isPresented: $test) {
-                Alert(title: Text("Test alert"),
-                      message: Text("Message"),
-                      dismissButton: .default(Text("Dismiss Button")))
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                        Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
+                    }
+                    Text("Start over")
+                }
+                
+                
+                VStack {
+                    Text("Text")
+                    Text("Score:")
+                }
+                
+                VStack {
+                    Text("Text")
+                    Text("9999")
+                }
+                
+                VStack {
+                    Text("Text:")
+                    Text("Round")
+                    
+                }
+                
+                VStack {
+                    Text("Text")
+                    Text("9999")
+                }
+                
+                VStack {
+                    
+                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                        Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
+                    }
+                    Text("Info")
+                }
+                
+                
             }
             
-            .alert(isPresented: $test) {
-                Alert(title: Text("Testtttt"),
-                      message: Text("messageeeee"),
-                      dismissButton: .default(Text("Defaultttt")))
-            }
+            
+            // Slider row
+            
+            // Button row
+            //            Button(action: {
+            //                print("Button pressed!")
+            //                self.alertIsVisible = true
+            //            }) {
+            //                Text("Button")
+            //                    .padding()
+            //                    .foregroundColor(Color.white)
+            //                    .background(Color.purple)
+            //                    .font(.title)
+            //            }
+            //            .alert(isPresented: $whosThereIsVisible) {
+            //                Alert(title: Text("Important message"),
+            //                      message: Text("Wear sunscreen"),
+            //                      dismissButton: .default(Text("Got it!")))
+            //
+            //            }
         }
     }
 }
