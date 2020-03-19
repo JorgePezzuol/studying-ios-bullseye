@@ -4,95 +4,83 @@ import SwiftUI
 struct ContentView: View {
     
     @State var alertIsVisible: Bool = false
-    @State var whosThereIsVisible: Bool = false
-    @State var test: Bool = false
+    @State var sliderValue: Double = 50.0
+    @State var target: Int = Int.random(in: 1...100)
+    @State var score: Int = 0
+    @State var round: Int = 0
     
     var body: some View {
         VStack {
             
+            Spacer()
+            
             // Target row
             HStack {
                 Text("Put the bullseye as close as you can to:")
-                Text("100")
+                Text("\(self.target)")
             }
+            
+            Spacer()
             
             HStack {
                 Text("1")
-                Slider(value: .constant(100))
+                Slider(value: self.$sliderValue, in: 1...100)
                 Text("100")
             }
             
+            Spacer()
             
             Button(action: {
-                print("button pressed")
+                self.alertIsVisible = true
+                
             }) {
                 Text("Hit me!")
             }
+                
+            .alert(isPresented: $alertIsVisible) {
+                
+                let roundedValue: Int = Int(self.sliderValue.rounded())
+                
+                return Alert(title: Text("Value of the slider: \(roundedValue)"),
+                             message: Text("You scored: \(self.pointsForCurrentRound())"),
+                             dismissButton: .default(Text("OK")) {
+                                
+                                self.target = Int.random(in: 1...100)
+                                self.score += self.pointsForCurrentRound()
+                                self.round += 1
+                                
+                    })
+            }
+            
+            Spacer()
             
             HStack {
                 
-                VStack {
-                    
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                        Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
-                    }
+                Button(action:{
+                    self.round = 0
+                    self.score = 0
+                }) {
                     Text("Start over")
                 }
+                Spacer()
+                Text("Score:")
+                Text("\(self.score)")
+                Spacer()
+                Text("Round:")
+                Text("\(self.round)")
+                Spacer()
                 
-                
-                VStack {
-                    Text("Text")
-                    Text("Score:")
-                }
-                
-                VStack {
-                    Text("Text")
-                    Text("9999")
-                }
-                
-                VStack {
-                    Text("Text:")
-                    Text("Round")
-                    
-                }
-                
-                VStack {
-                    Text("Text")
-                    Text("9999")
-                }
-                
-                VStack {
-                    
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                        Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
-                    }
+                Button(action: {}) {
                     Text("Info")
                 }
-                
-                
             }
-            
-            
-            // Slider row
-            
-            // Button row
-            //            Button(action: {
-            //                print("Button pressed!")
-            //                self.alertIsVisible = true
-            //            }) {
-            //                Text("Button")
-            //                    .padding()
-            //                    .foregroundColor(Color.white)
-            //                    .background(Color.purple)
-            //                    .font(.title)
-            //            }
-            //            .alert(isPresented: $whosThereIsVisible) {
-            //                Alert(title: Text("Important message"),
-            //                      message: Text("Wear sunscreen"),
-            //                      dismissButton: .default(Text("Got it!")))
-            //
-            //            }
+            .padding(.bottom, 20)
         }
+    }
+    
+    func pointsForCurrentRound() -> Int {
+        
+        return 100 - abs(self.target - Int(self.sliderValue.rounded()))
     }
 }
 
