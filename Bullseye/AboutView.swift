@@ -7,9 +7,11 @@ struct AboutView: View {
     struct TextStyle: ViewModifier {
         func body(content: Content) -> some View {
             return content
-                .font(Font.custom("Arial Rounded MT Bold", size: 16))
+                .font(Font.custom("Arial Rounded MT Bold", size: 14))
+                .foregroundColor(Color.white)
                 .padding(.top, 20)
                 .padding(.bottom, 20)
+                .shadow(color: Color.black, radius: 5, x: 2, y: 2)
         }
     }
     
@@ -22,9 +24,11 @@ struct AboutView: View {
         Group {
             VStack {
                 
-                Text("👻First swift project, my goal is to be an iOs developer 👻").modifier(TextStyle()).lineLimit(nil)
+                Text("First swift project!").modifier(TextStyle()).lineLimit(nil)
+                Text("my goal is to be an iOs developer 👻").modifier(TextStyle()).lineLimit(nil)
+                
             }
-            .background(Color.init(red: 1, green: 214 / 255, blue: 179 / 255))
+                
             .navigationBarTitle(Text("About"))
         }
         .background(Image("Background"))
