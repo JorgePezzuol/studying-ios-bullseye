@@ -31,7 +31,7 @@ Just clone and open in Xcode, then run
 * Main screen with the slider, goal is to guess the slider value and hit the button
 
 ## Status
-Project is: _finished
+Project is: finished
 
 ## Inspiration
 Project based on: https://www.raywenderlich.com/4919757-your-first-ios-and-swiftui-app
