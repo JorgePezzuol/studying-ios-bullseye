@@ -28,7 +28,7 @@ First Swift project, focusing on the new SwiftUI, my goal is to be a iOs develop
 Just clone and open in Xcode, then run
 
 ## Features
-* Main screen with the slider, goal is to guess the slider value and hit the button
+* Get a close value using the slider with the random value generated each round
 
 ## Status
 Project is: finished
