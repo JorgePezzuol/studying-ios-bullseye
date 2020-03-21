@@ -74,6 +74,7 @@ struct ContentView: View {
                 Slider(value: self.$sliderValue, in: 1...100).accentColor(Color.green)
                 Text("100").modifier(TextStyle())
             }
+            .padding(30)
             
             Spacer()
             
@@ -136,7 +137,8 @@ struct ContentView: View {
                 .background(Image("Button")).modifier(ButtonSmallTextStyle())
                 
             }
-            .padding(.bottom, 20)
+            
+            .padding(50)
         }
             
         .background(Image("Background"), alignment: .center)
@@ -187,7 +189,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().previewLayout(.fixed(width: 896, height: 414))
+        ContentView().previewLayout(.fixed(width: 667, height: 375))
     }
 }
 
